@@ -1,0 +1,377 @@
+@use 'variables' as *;
+
+@font-face {
+    font-family: LifeCraft;
+    src: url('../files/LifeCraft.ttf');
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    font-family: sans-serif;
+}
+
+a,
+a:visited,
+a:hover {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
+.container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+
+    height: 100vh;
+    color: white;
+
+
+    @include xl {
+        background: url('../img/lichking_1080p.jpg');
+    }
+
+    @include lg {
+        background-image: url('../img/lichking_900p.jpg');
+    }
+
+    @include md {
+        background-image: url('../img/lichking_768p.jpg');
+    }
+
+    @include lt-md {
+        background-image: url('../img/lichking_phone.jpg');
+    }
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: inherit;
+
+        scroll-snap-align: start;
+
+        &[name="page2"] {
+            background-color: #0D1321;
+
+            display: flex;
+            flex-direction: column;
+
+            @include lt-md {
+
+                height: 150vh;
+            }
+        }
+
+        &[name="page3"] {
+            background-color: #1D2D44;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        &[name="page4"] {
+            background-color: #1E1A1D;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+
+            height: 120vh;
+        }
+    }
+
+    .home {
+        display: flex;
+        flex-direction: row;
+
+        @include lt-sm {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        width: 80%;
+        justify-content: space-between;
+
+        .brand {
+            font-family: LifeCraft;
+
+            .guild-name {
+                font-size: 7rem;
+                -webkit-text-stroke: 2px #182639;
+                color: goldenrod;
+                text-shadow:
+                    1px 2px 0 #182639,
+                    -1px -1px 0 #182639,
+                    1px -1px 0 #182639,
+                    -1px 1px 0 #182639,
+                    1px 1px 0 #182639;
+            }
+
+            .guild-realm {
+                font-size: 2rem;
+                color: gold;
+                -webkit-text-stroke: 1px #182639;
+                text-shadow:
+                    1px 2px 0 #182639,
+                    -1px -1px 0 #182639,
+                    1px -1px 0 #182639,
+                    -1px 1px 0 #182639,
+                    1px 1px 0 #182639;
+            }
+        }
+
+
+    }
+
+    .roster {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 40%;
+
+        @include lt-sm {
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        font-size: 14px;
+        color: #8b949e;
+
+
+        .line {
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            border-left: 1px solid #8b949e;
+            border-right: 1px solid #8b949e;
+
+            &>.icon {
+                flex: 1;
+
+                @include lt-sm {
+                    flex: 2;
+                }
+
+                display: flex;
+                justify-content: center;
+
+                &.gm {
+                    color: gold;
+                }
+
+                &.officer {
+                    color: #3a95c4;
+                }
+
+                &.member {
+                    color: ivory;
+                }
+            }
+
+            &>.name {
+                flex: 8;
+
+            }
+
+            &>.rank {
+                flex: 3;
+            }
+
+            &:nth-child(odd) {
+                background-color: #21262d;
+            }
+
+            &:nth-child(even) {
+                background-color: #2B323B;
+            }
+
+            &:first-child {
+                background-color: #1e3046;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                border-top: 1px solid #8b949e;
+
+                color: #c9d1d9
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 6px;
+                border-bottom-right-radius: 6px;
+                border-bottom: 1px solid #8b949e;
+            }
+        }
+
+
+    }
+
+    .title-line {
+        width: 60%;
+
+        @include lt-md {
+            width: 75%;
+        }
+
+        @include lt-sm {
+            width: 90%;
+        }
+
+        text-align: center;
+        position: relative;
+
+        &>:first-child {
+            position: relative;
+
+            z-index: 30;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        &>:nth-child(2) {
+
+            width: 100%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            border-top: solid 1px #ddd;
+        }
+    }
+
+    .cards {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+            "card card"
+            "card card";
+        gap: 40px;
+        margin-top: 100px;
+
+        @include lt-md {
+            grid-template-areas:
+                "card"
+                "card"
+                "card"
+                "card";
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .card {
+            width: 350px;
+            background-color: white;
+            color: black;
+
+            padding: 20px;
+            border-radius: 6px;
+
+
+            &>div {
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .icon {
+                color: #3a95c4;
+                font-size: 3.3rem;
+            }
+
+            .title {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+.alpha {
+    color: rgba(255, 255, 255, .6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    user-select: none;
+
+}
+
+#clock{
+    position:absolute;
+    left:0;
+    top:0;
+    
+
+    background-color: #1E1A1D;
+    padding: 5px;
+    font-size: 1.1rem;
+    color: goldenrod;
+    border-bottom-right-radius: 5px;
+}
+
+.banner{
+    margin-top: 30px;
+    img {
+        width: 100%;
+    }
+}
+
+.dungeons {
+    margin-top: 60px;
+    font-size: 1.05rem;
+    border: 1px solid #8b949e;
+    border-radius: 6px;
+
+    
+
+    .dungeon {
+        padding: 5px;
+        padding-left: 100px;
+        padding-right: 100px;
+        background-color: rgba(0,0,0,.3);
+        &:first-child{
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        &:last-child{
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+        &:nth-child(odd){
+            background-color: rgba(0,0,0,.4);
+        }
+
+        i {
+            margin-right: 15px;
+            &.fa-circle-xmark {
+                color: red;
+            }
+
+            &.fa-circle-check {
+                color: green;
+            }
+        }
+
+    }
+}
+
+.bg-c1 {
+    background-color: #0D1321;
+}
+
+.bg-c2 {
+    background-color: #1D2D44;
+}
+
+.bg-c3 {
+    background-color: #1E1A1D;
+}

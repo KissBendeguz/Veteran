@@ -1,0 +1,311 @@
+@font-face {
+  font-family: LifeCraft;
+  src: url("../files/LifeCraft.ttf");
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  font-family: sans-serif;
+}
+
+a,
+a:visited,
+a:hover {
+  color: inherit;
+  /* blue colors for links too */
+  text-decoration: inherit;
+  /* no underline */
+}
+
+.container {
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media screen and (min-width: 1920px) and (max-width: 5000px) {
+  .container {
+    background: url("../img/lichking_1080p.jpg");
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1919px) {
+  .container {
+    background-image: url("../img/lichking_900p.jpg");
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .container {
+    background-image: url("../img/lichking_768p.jpg");
+  }
+}
+@media screen and (max-width: 959px) {
+  .container {
+    background-image: url("../img/lichking_phone.jpg");
+  }
+}
+.container section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  scroll-snap-align: start;
+}
+.container section[name=page2] {
+  background-color: #0D1321;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 959px) {
+  .container section[name=page2] {
+    height: 150vh;
+  }
+}
+.container section[name=page3] {
+  background-color: #1D2D44;
+  display: flex;
+  flex-direction: column;
+}
+.container section[name=page4] {
+  background-color: #1E1A1D;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 120vh;
+}
+.container .home {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+}
+@media screen and (max-width: 769px) {
+  .container .home {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.container .home .brand {
+  font-family: LifeCraft;
+}
+.container .home .brand .guild-name {
+  font-size: 7rem;
+  -webkit-text-stroke: 2px #182639;
+  color: goldenrod;
+  text-shadow: 1px 2px 0 #182639, -1px -1px 0 #182639, 1px -1px 0 #182639, -1px 1px 0 #182639, 1px 1px 0 #182639;
+}
+.container .home .brand .guild-realm {
+  font-size: 2rem;
+  color: gold;
+  -webkit-text-stroke: 1px #182639;
+  text-shadow: 1px 2px 0 #182639, -1px -1px 0 #182639, 1px -1px 0 #182639, -1px 1px 0 #182639, 1px 1px 0 #182639;
+}
+.container .roster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  font-size: 14px;
+  color: #8b949e;
+}
+@media screen and (max-width: 769px) {
+  .container .roster {
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+.container .roster .line {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  border-left: 1px solid #8b949e;
+  border-right: 1px solid #8b949e;
+}
+.container .roster .line > .icon {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 769px) {
+  .container .roster .line > .icon {
+    flex: 2;
+  }
+}
+.container .roster .line > .icon.gm {
+  color: gold;
+}
+.container .roster .line > .icon.officer {
+  color: #3a95c4;
+}
+.container .roster .line > .icon.member {
+  color: ivory;
+}
+.container .roster .line > .name {
+  flex: 8;
+}
+.container .roster .line > .rank {
+  flex: 3;
+}
+.container .roster .line:nth-child(odd) {
+  background-color: #21262d;
+}
+.container .roster .line:nth-child(even) {
+  background-color: #2B323B;
+}
+.container .roster .line:first-child {
+  background-color: #1e3046;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-top: 1px solid #8b949e;
+  color: #c9d1d9;
+}
+.container .roster .line:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom: 1px solid #8b949e;
+}
+.container .title-line {
+  width: 60%;
+  text-align: center;
+  position: relative;
+}
+@media screen and (max-width: 959px) {
+  .container .title-line {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 769px) {
+  .container .title-line {
+    width: 90%;
+  }
+}
+.container .title-line > :first-child {
+  position: relative;
+  z-index: 30;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.container .title-line > :nth-child(2) {
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  border-top: solid 1px #ddd;
+}
+.container .cards {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: "card card" "card card";
+  gap: 40px;
+  margin-top: 100px;
+}
+@media screen and (max-width: 959px) {
+  .container .cards {
+    grid-template-areas: "card" "card" "card" "card";
+    gap: 50px;
+    margin-top: 40px;
+  }
+}
+.container .cards .card {
+  width: 350px;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 6px;
+}
+.container .cards .card > div {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.container .cards .card .icon {
+  color: #3a95c4;
+  font-size: 3.3rem;
+}
+.container .cards .card .title {
+  font-size: 1.3rem;
+}
+
+.alpha {
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#clock {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #1E1A1D;
+  padding: 5px;
+  font-size: 1.1rem;
+  color: goldenrod;
+  border-bottom-right-radius: 5px;
+}
+
+.banner {
+  margin-top: 30px;
+}
+.banner img {
+  width: 100%;
+}
+
+.dungeons {
+  margin-top: 60px;
+  font-size: 1.05rem;
+  border: 1px solid #8b949e;
+  border-radius: 6px;
+}
+.dungeons .dungeon {
+  padding: 5px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.dungeons .dungeon:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.dungeons .dungeon:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.dungeons .dungeon:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.dungeons .dungeon i {
+  margin-right: 15px;
+}
+.dungeons .dungeon i.fa-circle-xmark {
+  color: red;
+}
+.dungeons .dungeon i.fa-circle-check {
+  color: green;
+}
+
+.bg-c1 {
+  background-color: #0D1321;
+}
+
+.bg-c2 {
+  background-color: #1D2D44;
+}
+
+.bg-c3 {
+  background-color: #1E1A1D;
+}/*# sourceMappingURL=styles.css.map */
